@@ -34,7 +34,7 @@ app.post('/api/login', async (req, res) => {
     }
   } catch (error) {
     console.error('Login error:', error);
-    res.status(500).json({ error: 'An error occurred during login' });
+    res.status(500).json({ error: 'An error occurred during login', details: error.message });
   }
 });
 
@@ -45,7 +45,7 @@ app.get('/api/users/check', async (req, res) => {
     res.json({ exists: userCount > 0 });
   } catch (error) {
     console.error('Error checking user existence:', error);
-    res.status(500).json({ error: 'An error occurred while checking user existence' });
+    res.status(500).json({ error: 'An error occurred while checking user existence', details: error.message });
   }
 });
 
@@ -71,7 +71,7 @@ app.post('/api/admin/create', async (req, res) => {
     res.status(201).json({ message: 'Admin user created successfully' });
   } catch (error) {
     console.error('Error creating admin user:', error);
-    res.status(500).json({ error: 'An error occurred while creating the admin user' });
+    res.status(500).json({ error: 'An error occurred while creating the admin user', details: error.message });
   }
 });
 
@@ -87,7 +87,7 @@ app.post('/api/claims', async (req, res) => {
     res.status(201).json(newClaim);
   } catch (error) {
     console.error('Error creating claim:', error);
-    res.status(500).json({ error: 'An error occurred while creating the claim' });
+    res.status(500).json({ error: 'An error occurred while creating the claim', details: error.message });
   }
 });
 
@@ -97,7 +97,7 @@ app.get('/api/claims', async (req, res) => {
     res.json(claims);
   } catch (error) {
     console.error('Error fetching claims:', error);
-    res.status(500).json({ error: 'An error occurred while fetching claims' });
+    res.status(500).json({ error: 'An error occurred while fetching claims', details: error.message });
   }
 });
 
@@ -113,7 +113,7 @@ app.get('/api/claims/:id', async (req, res) => {
     }
   } catch (error) {
     console.error('Error fetching claim:', error);
-    res.status(500).json({ error: 'An error occurred while fetching the claim' });
+    res.status(500).json({ error: 'An error occurred while fetching the claim', details: error.message });
   }
 });
 
@@ -126,7 +126,7 @@ app.patch('/api/claims/:id', async (req, res) => {
     res.json(updatedClaim);
   } catch (error) {
     console.error('Error updating claim:', error);
-    res.status(500).json({ error: 'An error occurred while updating the claim' });
+    res.status(500).json({ error: 'An error occurred while updating the claim', details: error.message });
   }
 });
 
